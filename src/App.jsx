@@ -8,6 +8,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import './index.css';
 import './BackgroundAnimation.css'; // Import the CSS file
+import AskGPT from './Pages/AskGPT';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/AskGPT" element={<AskGPT/>} />
       </Routes>
       <Footer />
     </div>
