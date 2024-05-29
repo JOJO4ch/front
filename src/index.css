@@ -1,0 +1,51 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Ensure it takes up the full viewport height */
+  overflow: hidden;
+}
+
+header, main, footer {
+  position: relative;
+  z-index: 1; /* Ensure content is above the background */
+}
+
+header {
+  width: 100%;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box; /* Ensure padding does not cause overflow */
+}
+
+main {
+  flex: 1;
+  padding: 1rem;
+  box-sizing: border-box; /* Ensure padding does not cause overflow */
+  overflow-y: auto; /* Allow content to scroll within the main area if necessary */
+}
+
+footer {
+  width: 100%;
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  color: white;
+  text-align: center;
+  box-sizing: border-box; /* Ensure padding does not cause overflow */
+}

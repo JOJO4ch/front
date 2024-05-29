@@ -1,0 +1,17 @@
+/* src/Footer.css */
+footer {
+    background-color: #2b2727;
+    color: #fff;
+   
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    bottom: 0;
+    width: 99%;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  

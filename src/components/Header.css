@@ -1,0 +1,72 @@
+/* Header.css */
+.header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px; /* Adjust padding */
+  margin: bottom;
+  text-align: center;
+}
+
+.header h1 {
+  margin: 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+}
+
+.navbar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.navbar ul li {
+  display: inline;
+  margin: 0 10px;
+}
+
+.navbar ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Footer.css */
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+  text-align: center;
+}
+/* Header.css */
+
+header {
+  display: flex;
+  justify-content: center; /* Center the content horizontally */
+  align-items: center; /* Center the content vertically */
+  padding: 1rem;
+  background-color: #333;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.header-title {
+  text-decoration: none;
+  color: white;
+  font-size: 2rem; /* Make the title larger */
+  font-weight: bold; /* Make the title bold */
+  margin-right: auto; /* Pushes the welcome message to the right */
+}
+
+.welcome-message {
+  margin: 0;
+  font-size: 1rem; /* Adjust font size if needed */
+}
