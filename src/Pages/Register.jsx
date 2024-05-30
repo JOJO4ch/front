@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from '../axiosConfig'; // Import the axios configuration
 import './Register.css'; // Import the CSS file
 
 const Registration = () => {
@@ -8,8 +9,10 @@ const Registration = () => {
     is_active: true,
     is_superuser: false,
     is_verified: false,
-    username: ''
+    login: ''
   });
+
+  const [error, setError] = useState(null);
 
   const handleChange = (e) => {
     setFormData({
@@ -21,10 +24,17 @@ const Registration = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Implement your registration logic here
-      console.log('Registration form data:', formData);
+      const response = await axios.post('/auth/register', formData);
+
+      // Assuming your backend returns a JWT token on successful registration
+      const { token } = response.data;
+      localStorage.setItem('token', token); // Store the token in localStorage
+
+      // Optionally redirect or perform additional actions after registration
+      console.log('Registration successful:', response.data);
     } catch (error) {
       console.error('Registration failed:', error);
+      setError('Registration failed. Please check your inputs and try again.');
     }
   };
 
@@ -41,9 +51,10 @@ const Registration = () => {
           <input name="password" value={formData.password} onChange={handleChange} placeholder="Password" type="password" />
         </div>
         <div className="form-group">
-          <label htmlFor="Username">Username</label>
-          <input name="Username" value={formData.username} onChange={handleChange} placeholder="Username" />
+          <label htmlFor="login">Username</label>
+          <input name="login" value={formData.login} onChange={handleChange} placeholder="Username" />
         </div>
+        {error && <p className="error">{error}</p>}
         <button type="submit">Register</button>
       </form>
     </div>

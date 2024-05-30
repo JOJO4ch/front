@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import './index.css';
 import './BackgroundAnimation.css'; // Import the CSS file
 import AskGPT from './Pages/AskGPT';
+// import ProtectedRoute from './ProtectedRoute';
 
 const App = () => {
   return (
