@@ -8,6 +8,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import './index.css';
 import GPTForm from './Pages/GPTform';
+import CreateArticleForm from './Pages/CreateArticleForm';
 import './BackgroundAnimation.css'; // Import the CSS file
 
 
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/GPT" element={<GPTForm />} />
+        <Route path="/article/create_article" element={<CreateArticleForm />} />
       </Routes>
       <Footer />
     </div>

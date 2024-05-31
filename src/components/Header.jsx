@@ -52,6 +52,7 @@ const Header = () => {
             </>
           )}
           <li><Link to="/GPT">AskGPT</Link></li>
+          <li><Link to="/article/create_article">Create Article</Link></li>
         </ul>
       </nav>
     </header>
