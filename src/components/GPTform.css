@@ -1,44 +1,74 @@
 .gpt-form-container {
-    max-width: 400px;
+    max-width: 600px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .gpt-form-title {
     text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
 }
 
 .gpt-form {
-    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .gpt-form label {
     font-weight: bold;
+    margin-bottom: 5px;
 }
 
 .gpt-form textarea {
-    width: 100%;
+    width: 96%;
+    height: 150px; /* Fixed height for the textarea */
     padding: 10px;
-    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none; /* Disable resizing */
+    flex: 1;
+    margin: auto;
 }
 
 .gpt-form-button {
-    display: block;
-    width: 100%;
     padding: 10px;
     background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.gpt-form-button:hover {
+    background-color: #0056b3;
 }
 
 .gpt-result {
     background-color: #fff;
-    padding: 10px;
+    padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    margin-top: 20px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.gpt-result h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+.gpt-result p {
+    white-space: pre-wrap;
+    color: #555;
+    line-height: 1.5;
 }

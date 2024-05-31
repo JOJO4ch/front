@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Cookies from 'js-cookie'; // Для использования куков
-import './GPTform.css'; // Импортируйте CSS файл
+import Cookies from 'js-cookie';
+import './GPTform.css';
 
 const GPTForm = () => {
     const [formData, setFormData] = useState({
@@ -9,12 +9,12 @@ const GPTForm = () => {
         style: '',
         tone: '',
         language_constructs: '',
-        answer_length: 0,
+        answer_length: null,
         details: '',
         post_type: 'Статья',
         user_text: ''
     });
-    const [result, setResult] = useState('');
+    const [result, setResult] = useState({ header: '', text: '' });
     const [error, setError] = useState(null);
 
     const handleChange = (e) => {
@@ -23,22 +23,30 @@ const GPTForm = () => {
     };
 
     const handleSubmit = () => {
-        // Получаем JWT-токен из куки или localStorage
         const jwtToken = Cookies.get('jwtToken') || localStorage.getItem('jwtToken');
 
-        if (!jwtToken) {
-            setError('Вы не авторизованы.');
-            return;
-        }
+        const payload = {
+            gpt: {
+                chosed_type: formData.chosed_type,
+                style: formData.style || null,
+                tone: formData.tone || null,
+                language_constructs: formData.language_constructs || null,
+                answer_lenght: formData.answer_length !== null ? formData.answer_length : null,
+                details: formData.details || null,
+                post_type: formData.post_type,
+            },
+            user_text: formData.user_text
+        };
 
-        axios.post('http://127.0.0.1:8000/article/ask_gpt', formData, {
+        axios.post('http://127.0.0.1:8000/article/ask_gpt', payload, {
             headers: {
                 'Authorization': `Bearer ${jwtToken}`,
                 'Content-Type': 'application/json'
             }
         })
             .then(response => {
-                setResult(response.data.result);
+                const { header, text } = response.data;
+                setResult({ header, text });
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -50,8 +58,8 @@ const GPTForm = () => {
         <div className="gpt-form-container">
             <h2 className="gpt-form-title">Ask GPT</h2>
             <div className="gpt-form">
-                <label htmlFor="user_text">Текст пользователя:</label><br />
-                <textarea id="user_text" name="user_text" rows="4" cols="50" value={formData.user_text} onChange={handleChange}></textarea><br /><br />
+                <label htmlFor="user_text">Текст пользователя:</label>
+                <textarea id="user_text" name="user_text" value={formData.user_text} onChange={handleChange}></textarea>
                 <button className="gpt-form-button" onClick={handleSubmit}>Отправить запрос</button>
             </div>
             {error && (
@@ -59,10 +67,10 @@ const GPTForm = () => {
                     <p>{error}</p>
                 </div>
             )}
-            {result && (
+            {result.header && (
                 <div className="gpt-result">
-                    <h3>Результат:</h3>
-                    <p>{result}</p>
+                    <h3>{result.header}</h3>
+                    <p>{result.text}</p>
                 </div>
             )}
         </div>
