@@ -31,7 +31,7 @@ const GPTForm = () => {
                 style: formData.style || null,
                 tone: formData.tone || null,
                 language_constructs: formData.language_constructs || null,
-                answer_lenght: formData.answer_length !== null ? formData.answer_length : null,
+                answer_length: formData.answer_length !== null ? formData.answer_length : null,
                 details: formData.details || null,
                 post_type: formData.post_type,
             },
@@ -54,23 +54,36 @@ const GPTForm = () => {
             });
     };
 
+    const copyToClipboard = () => {
+        navigator.clipboard.writeText(result.text);
+        alert('Результат скопирован в буфер обмена!');
+    };
+
     return (
         <div className="gpt-form-container">
             <h2 className="gpt-form-title">Ask GPT</h2>
             <div className="gpt-form">
-                <label htmlFor="user_text">Текст пользователя:</label>
-                <textarea id="user_text" name="user_text" value={formData.user_text} onChange={handleChange}></textarea>
+                <textarea
+                    className="user-text-input"
+                    name="user_text"
+                    value={formData.user_text}
+                    onChange={handleChange}
+                    placeholder="Введите текст"
+                />
                 <button className="gpt-form-button" onClick={handleSubmit}>Отправить запрос</button>
+                {result.header && (
+                    <div className="gpt-result">
+                        <h3>{result.header}</h3>
+                        <div className="result-text" style={{ maxHeight: '200px', overflowY: 'auto' }}>
+                            <p>{result.text}</p>
+                        </div>
+                        <button className="copy-button" onClick={copyToClipboard}>Скопировать результат</button>
+                    </div>
+                )}
             </div>
             {error && (
                 <div className="error-message">
                     <p>{error}</p>
-                </div>
-            )}
-            {result.header && (
-                <div className="gpt-result">
-                    <h3>{result.header}</h3>
-                    <p>{result.text}</p>
                 </div>
             )}
         </div>

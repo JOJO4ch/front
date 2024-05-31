@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import '../styles.css'; // Import the CSS file
+import api from '../components/api'; // Импортируем вашу api
+import '../styles.css'; // Импортируем CSS файл
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -17,9 +17,13 @@ const Login = () => {
     });
   };
 
+  const saveToken = (token) => { // Объявляем функцию для сохранения токена
+    localStorage.setItem('jwtToken', token);
+  };
+
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://127.0.0.1:8000/auth/jwt/login', {
+      const response = await api.post('/auth/jwt/login', {
         grant_type: '',
         username: formData.email,
         password: formData.password,
@@ -35,11 +39,10 @@ const Login = () => {
       // Получаем токен из ответа
       const token = response.data.access_token;
 
-      // Сохраняем токен в localStorage
-      localStorage.setItem('jwtToken', token);
+      // Сохраняем токен
+      saveToken(token);
 
-      // Дополнительно можно выполнить какие-то действия, например, перенаправить пользователя на другую страницу
-      // window.location.href = '/home'; // Перенаправление на страницу home
+      // Дополнительные действия после успешной авторизации
     } catch (error) {
       console.error('Login failed:', error);
       setError('Login failed. Please check your credentials and try again.');

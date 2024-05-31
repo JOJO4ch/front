@@ -7,8 +7,10 @@ import Register from './Pages/Register';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import './index.css';
+import GPTForm from './Pages/GPTform';
 import './BackgroundAnimation.css'; // Import the CSS file
-import AskGPT from './Pages/AskGPT';
+
+
 // import ProtectedRoute from './ProtectedRoute';
 
 const App = () => {
@@ -20,8 +22,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/AskGPT" element={<AskGPT/>} />
+        <Route path="/GPT" element={<GPTForm />} />
       </Routes>
       <Footer />
     </div>
