@@ -1,8 +1,10 @@
+// Login.jsx
 import React, { useState } from 'react';
-import api from '../components/api'; // Импортируем вашу api
-import '../styles.css'; // Импортируем CSS файл
+import axios from 'axios';
+import * as jwt_decode from 'jwt-decode';
+import '../styles.css'; // Import the CSS file
 
-const Login = () => {
+const Login = ({ setIsAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -17,32 +19,29 @@ const Login = () => {
     });
   };
 
-  const saveToken = (token) => { // Объявляем функцию для сохранения токена
+  
+
+
+  const saveToken = (token) => {
     localStorage.setItem('jwtToken', token);
+    const user = jwt_decode(token);
+    localStorage.setItem('user', JSON.stringify(user));
   };
 
   const handleLogin = async () => {
     try {
-      const response = await api.post('/auth/jwt/login', {
-        grant_type: '',
+      const response = await axios.post('/api/auth/jwt/login', {
         username: formData.email,
-        password: formData.password,
-        scope: '',
-        client_id: '',
-        client_secret: ''
+        password: formData.password
       }, {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         }
       });
 
-      // Получаем токен из ответа
       const token = response.data.access_token;
-
-      // Сохраняем токен
       saveToken(token);
-
-      // Дополнительные действия после успешной авторизации
+      setIsAuthenticated(true);
     } catch (error) {
       console.error('Login failed:', error);
       setError('Login failed. Please check your credentials and try again.');

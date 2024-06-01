@@ -1,10 +1,11 @@
-// CreateArticleForm.jsx
+// EditArticleForm.jsx
 import React, { useState } from 'react';
 import axios from 'axios';
-import './CreateArticleForm.css';
+import './EditArticleForm.css';
 
-const CreateArticleForm = () => {
+const EditArticleForm = () => {
   const [formData, setFormData] = useState({
+    id: '',
     header: '',
     text: ''
   });
@@ -20,20 +21,32 @@ const CreateArticleForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://127.0.0.1:8000/article/create_article', formData);
+      await axios.put('/api/article/edit_article', formData);
       setSuccess(true);
       setError(null);
-      setFormData({ header: '', text: '' });
+      setFormData({ id: '', header: '', text: '' });
     } catch (error) {
       console.error('Error:', error);
-      setError('Произошла ошибка при создании статьи.');
+      setError('Произошла ошибка при редактировании статьи.');
     }
   };
 
   return (
-    <div className="create-article-container">
-      <h2 className="create-article-title">Создать пост</h2>
+    <div className="edit-article-container">
+      <h2 className="edit-article-title">Редактировать пост</h2>
       <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="id">ID поста:</label>
+          <input
+            type="text"
+            id="id"
+            name="id"
+            value={formData.id}
+            onChange={handleChange}
+            placeholder="Введите ID поста"
+            required
+          />
+        </div>
         <div className="form-group">
           <label htmlFor="header">Заголовок:</label>
           <input
@@ -58,11 +71,11 @@ const CreateArticleForm = () => {
           />
         </div>
         {error && <p className="error-message">{error}</p>}
-        {success && <p className="success-message">Пост успешно создан!</p>}
-        <button type="submit" className="submit-button">Создать пост</button>
+        {success && <p className="success-message">Пост успешно отредактирован!</p>}
+        <button type="submit" className="submit-button">Редактировать пост</button>
       </form>
     </div>
   );
 };
 
-export default CreateArticleForm;
+export default EditArticleForm;

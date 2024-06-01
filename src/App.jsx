@@ -1,33 +1,42 @@
 // App.jsx
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './Pages/Home';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
+import GPTForm from './Pages/GPTform';
+import CreateEditArticleForm from './Pages/CreateEditArticleForm';
+
 import Header from './components/Header';
 import Footer from './components/Footer';
 import './index.css';
-import GPTForm from './Pages/GPTform';
-import CreateArticleForm from './Pages/CreateArticleForm';
 import './BackgroundAnimation.css'; // Import the CSS file
 
-
-// import ProtectedRoute from './ProtectedRoute';
-
 const App = () => {
+  const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+
+  React.useEffect(() => {
+    const token = localStorage.getItem('jwtToken');
+    if (token) {
+      setIsAuthenticated(true);
+    }
+  }, []);
+
   return (
-    <div className="app-container">
-    <div className="rolling-background"></div>
-    <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/GPT" element={<GPTForm />} />
-        <Route path="/article/create_article" element={<CreateArticleForm />} />
-      </Routes>
-      <Footer />
-    </div>
+    
+      <div className="app-container">
+        <div className="rolling-background"></div>
+        <Header isAuthenticated={isAuthenticated} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/AskGPT" element={isAuthenticated ? <GPTForm /> : <Navigate to="/login" />} />
+          <Route path="/article/create_edit_article" element={isAuthenticated ? <CreateEditArticleForm /> : <Navigate to="/login" />} />
+        </Routes>
+        <Footer />
+      </div>
+    
   );
 };
 
