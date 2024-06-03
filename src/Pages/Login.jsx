@@ -1,10 +1,9 @@
-// Login.jsx
 import React, { useState } from 'react';
 import axios from 'axios';
 import * as jwt_decode from 'jwt-decode';
-import '../styles.css'; // Import the CSS file
+import './Login.css'; // Import the CSS file specific to Login
 
-const Login = ({ setIsAuthenticated }) => {
+const Login = ({ setIsAuthenticated, setUser }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -19,13 +18,11 @@ const Login = ({ setIsAuthenticated }) => {
     });
   };
 
-  
-
-
   const saveToken = (token) => {
     localStorage.setItem('jwtToken', token);
     const user = jwt_decode(token);
     localStorage.setItem('user', JSON.stringify(user));
+    setUser(user); // Set the user state with decoded user data
   };
 
   const handleLogin = async () => {
@@ -42,6 +39,8 @@ const Login = ({ setIsAuthenticated }) => {
       const token = response.data.access_token;
       saveToken(token);
       setIsAuthenticated(true);
+      setError(null); // Clear error after successful login
+      window.location.href = '/'; // Redirect to home page
     } catch (error) {
       console.error('Login failed:', error);
       setError('Login failed. Please check your credentials and try again.');
@@ -54,14 +53,14 @@ const Login = ({ setIsAuthenticated }) => {
   };
 
   return (
-    <div className="form-container">
+    <div className="form-container-login">
       <h2 className="form-title">Login</h2>
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
+        <div className="form-group-login">
           <label htmlFor="email">Email</label>
           <input name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
         </div>
-        <div className="form-group">
+        <div className="form-group-login">
           <label htmlFor="password">Password</label>
           <input name="password" value={formData.password} onChange={handleChange} placeholder="Password" type="password" />
         </div>

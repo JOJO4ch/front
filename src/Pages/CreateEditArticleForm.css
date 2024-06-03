@@ -1,77 +1,147 @@
-.create-edit-article-container {
-  width: 400px;
-  margin: auto;
+/* CreateEditArticleForm.css */
+
+/* Стили для формы создания поста */
+.create-article-container {
+  max-width: 500px;
+  margin: 0 auto;
   padding: 20px;
   border: 1px solid #ccc;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: #f9f9f9;
 }
 
-.create-edit-article-title {
+.create-article-container .article-title {
   text-align: center;
+  font-size: 24px;
   margin-bottom: 20px;
 }
 
-.toggle-button {
+.create-article-container .form-group {
+  margin-bottom: 20px;
+}
+
+.create-article-container .form-group label {
+  font-weight: bold;
   display: block;
-  margin: 0 auto 20px auto;
-  padding: 10px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
 }
 
-.toggle-button:hover {
-  background-color: #0056b3;
-}
-
-.form-group {
-  margin-bottom: 15px;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-.form-group input,
-.form-group textarea {
+.create-article-container .form-group input[type="text"],
+.create-article-container .form-group textarea {
   width: 100%;
   padding: 10px;
+  font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 16px;
-  max-width: 93%;
-  max-height: 150px;
+  box-sizing: border-box;
 }
 
-.error-message {
-  color: red;
-  text-align: center;
+.create-article-container .form-group textarea {
+  resize: vertical;
+}
+
+.create-article-container .error-message,
+.create-article-container .success-message {
   margin-top: 10px;
-}
-
-.success-message {
-  color: green;
+  padding: 10px;
+  border-radius: 5px;
   text-align: center;
-  margin-top: 10px;
 }
 
-.submit-button {
+.create-article-container .error-message {
+  color: #ff0000;
+  background-color: #ffebee;
+}
+
+.create-article-container .success-message {
+  color: #00c853;
+  background-color: #e8f5e9;
+}
+
+.create-article-container .submit-button {
   display: block;
   width: 100%;
   padding: 10px;
-  background-color: #007bff;
+  font-size: 16px;
+  background-color: #4caf50;
   color: #fff;
   border: none;
   border-radius: 5px;
-  font-size: 16px;
   cursor: pointer;
 }
 
-.submit-button:hover {
-  background-color: #0056b3;
+.create-article-container .submit-button:hover {
+  background-color: #45a049;
+}
+
+/* Стили для формы редактирования поста */
+.edit-article-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.edit-article-container .article-title {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.edit-article-container .form-group {
+  margin-bottom: 20px;
+}
+
+.edit-article-container .form-group label {
+  font-weight: bold;
+  display: block;
+}
+
+.edit-article-container .form-group input[type="text"],
+.edit-article-container .form-group textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.edit-article-container .form-group textarea {
+  resize: vertical;
+}
+
+.edit-article-container .error-message,
+.edit-article-container .success-message {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.edit-article-container .error-message {
+  color: #ff0000;
+  background-color: #ffebee;
+}
+
+.edit-article-container .success-message {
+  color: #00c853;
+  background-color: #e8f5e9;
+}
+
+.edit-article-container .submit-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.edit-article-container .submit-button:hover {
+  background-color: #45a049;
 }

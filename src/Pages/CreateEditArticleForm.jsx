@@ -34,6 +34,18 @@ const CreateEditArticleForm = () => {
     }
   };
 
+  const handleDelete = async () => {
+    try {
+      await axios.delete(`/api/article/delete_article?article_id=${formData.id}`);
+      setSuccess(true);
+      setError(null);
+      setFormData({ id: '', header: '', text: '' });
+    } catch (error) {
+      console.error('Error:', error);
+      setError('Произошла ошибка при удалении статьи.');
+    }
+  };
+
   const toggleMode = () => {
     setIsEditMode(!isEditMode);
     setSuccess(false);
@@ -42,11 +54,14 @@ const CreateEditArticleForm = () => {
   };
 
   return (
-    <div className="create-edit-article-container">
-      <h2 className="create-edit-article-title">{isEditMode ? 'Редактировать пост' : 'Создать пост'}</h2>
+    <div className={isEditMode ? "edit-article-container" : "create-article-container"}>
+      <h2 className="article-title">{isEditMode ? 'Редактировать пост' : 'Создать пост'}</h2>
       <button onClick={toggleMode} className="toggle-button">
         {isEditMode ? 'Переключиться на создание поста' : 'Переключиться на редактирование поста'}
       </button>
+      {isEditMode && (
+        <button onClick={handleDelete} className="delete-button">Удалить пост</button>
+      )}
       <form onSubmit={handleSubmit}>
         {isEditMode && (
           <div className="form-group">
