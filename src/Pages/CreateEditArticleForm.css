@@ -44,6 +44,8 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 16px;
+  max-width: 93%;
+  max-height: 150px;
 }
 
 .error-message {

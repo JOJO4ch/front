@@ -1,4 +1,4 @@
-/* GPTForm.css */
+/* GPTform.css */
 .gpt-form-container {
     width: 400px;
     margin: auto;
@@ -10,47 +10,62 @@
 
 .gpt-form-title {
     text-align: center;
+    margin-bottom: 20px;
 }
 
 .gpt-form {
     display: flex;
     flex-direction: column;
+    gap: 15px;
 }
 
-.user-text-input {
+.user-text-input{
+    width: 95%;
+    max-width: 378px;
     padding: 10px;
-    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px; 
+} .result-header-input{
+    width: 95%;
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-    resize: none; /* Disable textarea resizing */
-    width: calc(100% - 22px); /* Adjust width */
+} .result-text-input {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+
+    border-radius: 5px;
+    font-size: 16px;
 }
 
-.gpt-form-button {
-    width: auto; /* Set to auto to prevent full-width */
-    padding: 10px 20px; /* Adjust padding as needed */
+.gpt-form-button, .submit-edited-result-button {
+    width: 100%;
+    padding: 10px;
     background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
+    margin-top: 10px;
 }
 
-.gpt-form-button:hover {
+.gpt-form-button:hover, .submit-edited-result-button:hover {
     background-color: #0056b3;
 }
 
 .gpt-result {
     margin-top: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .error-message {
-    margin-top: 10px;
     color: red;
+    text-align: center;
+    margin-top: 10px;
 }

@@ -25,7 +25,7 @@ styles.css
 }
 
 .form-group input {
-  width:fit-content;
+  width:93%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
