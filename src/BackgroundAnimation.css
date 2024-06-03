@@ -13,7 +13,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('./assets/32.png') repeat-x; /* Adjust the path to your image */
+    background: url('./assets/backk.jpeg') repeat-x; /* Adjust the path to your image */
     background-size: cover;
     animation: roll 60s linear infinite;
     z-index: -1; /* Ensure it stays behind other content */
