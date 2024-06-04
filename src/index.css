@@ -19,7 +19,7 @@ body, html {
 }
 
 header, main, footer {
-  position: relative;
+  position:fixed;
   z-index: 1; /* Ensure content is above the background */
 }
 

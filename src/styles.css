@@ -34,6 +34,7 @@ styles.css
 .form-group button {
   width: 100%;
   padding: 10px;
+  margin: 20px;
   border: none;
   border-radius: 5px;
   background-color: #007bff;
@@ -72,24 +73,26 @@ label {
   margin-bottom: 5px;
 }
 
-input {
+/* input {
   width: 100%;
   padding: 10px;
+  
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 5px;
-}
+} */
 
-button {
+/* button {
   width: 100%;
-  padding: 10px;
+  margin: 5px;
+  padding: 8px;
   font-size: 16px;
   color: #fff;
   background-color: #007bff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-}
+} */
 
 button:hover {
   background-color: #0056b3;

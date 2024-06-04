@@ -6,7 +6,7 @@ import Login from './Pages/Login';
 import Register from './Pages/Register';
 import GPTForm from './Pages/GPTform';
 import CreateEditArticleForm from './Pages/CreateEditArticleForm';
-
+import SearchArticles from './Pages/SearchArticles';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import './index.css';
@@ -33,6 +33,7 @@ const App = () => {
           <Route path="/register" element={<Register />} />
           <Route path="/AskGPT" element={isAuthenticated ? <GPTForm /> : <Navigate to="/login" />} />
           <Route path="/article/create_edit_article" element={isAuthenticated ? <CreateEditArticleForm /> : <Navigate to="/login" />} />
+           <Route path="/article/search" element={isAuthenticated ? <SearchArticles /> : <Navigate to="/login" />} />
         </Routes>
         <Footer />
       </div>
