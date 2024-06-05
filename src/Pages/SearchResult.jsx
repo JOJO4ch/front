@@ -1,4 +1,5 @@
 import React from 'react';
+import './SearchResult.css';
 
 const SearchResult = ({ article }) => {
   const { header, text, created_at } = article;
