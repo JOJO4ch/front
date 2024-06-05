@@ -39,7 +39,6 @@ const Header = ({ isAuthenticated }) => {
             )}
             {isAuthenticated && (
               <>
-                <li><Link to="/AskGPT">Ask GPT</Link></li>
                 <li><Link to="/article/create_edit_article">Создать пост</Link></li>
                 <li><Link to="/article/search">Поиск</Link></li>
                 <li><span className="username">Welcome, {getUsername()}</span></li>

@@ -1,76 +1,137 @@
-/* GPTform.css */
-.gpt-form-container {
-    width: 400px;
+/* Global Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+  }
+  
+  /* GPT Form Container Styles */
+  .article-form-container .gpt-form-container {
+    max-width: 600px;
     margin: auto;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-}
-
-.gpt-form-title {
-    text-align: center;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .article-form-container .gpt-form-title {
     margin-bottom: 20px;
-}
-
-.gpt-form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.user-text-input{
-    width: 95%;
-    max-width: 378px;
-    max-height: 150px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px; 
-} .result-header-input{
-    width: 95%;
-    max-width: 378px;
-    max-height: 200px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-} .result-text-input {
-    width: 95%;
-    max-width: 378px;
-    max-height: 200px;
-    padding: 10px;
-    border: 1px solid #ccc;
-
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-.gpt-form-button, .submit-edited-result-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 10px;
-}
-
-.gpt-form-button:hover, .submit-edited-result-button:hover {
-    background-color: #0056b3;
-}
-
-.gpt-result {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.error-message {
-    color: red;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
     text-align: center;
-    margin-top: 10px;
-}
+  }
+  
+  /* GPT Form Styles */
+  .article-form-container .gpt-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .article-form-container .user-text-input {
+    width: 100% !important;
+    height: 100px !important;
+    max-height: 150px !important;
+    padding: 20px !important;
+    font-size: 16px !important;
+    border: 1px solid #ccc !important;
+    border-radius: 4px !important;
+    resize: none !important;  /* Disable resizing */
+    background-color: rgba(255, 255, 255, 0.9) !important;
+  }
+  
+  .article-form-container .gpt-form-button {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .article-form-container .gpt-form-button:hover {
+    background-color: #3e8e41;
+  }
+  
+  /* GPT Result Styles */
+  .article-form-container .gpt-result {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    width: 100%;
+    border-radius: 4px;
+  }
+  
+  .article-form-container .result-header-input,
+  .article-form-container .result-text-input {
+    width: 100% !important;
+    padding: 10px !important;
+    font-size: 16px !important;
+    border: 1px solid #ccc !important;
+    border-radius: 4px !important;
+    background-color: rgba(255, 255, 255, 0.9) !important;
+  }
+  
+  .article-form-container .result-header-input {
+    height: 40px !important;
+  }
+  
+  .article-form-container .result-text-input {
+    min-height: 100px !important;
+    max-height: 300px !important;
+    resize: vertical !important;
+  }
+  
+  .article-form-container .submit-edited-result-button {
+    width: auto;
+    margin: 10px 0;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .article-form-container .submit-edited-result-button:hover {
+    background-color: #3e8e41;
+  }
+  
+  /* Error Message Styles */
+  .article-form-container .error-message {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Specific Styles for Request Text */
+  #requestText {
+    width: 100% !important;
+    height: 100px !important;
+    max-height: 150px !important;
+    padding: 20px !important;
+    font-size: 16px !important;
+    border: 1px solid #ccc !important;
+    border-radius: 4px !important;
+    resize: none !important;
+    background-color: rgba(255, 255, 255, 0.9) !important;
+  }
+  
