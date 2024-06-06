@@ -55,15 +55,15 @@ const Login = ({ setIsAuthenticated, setUser }) => {
   return (
     <div className="form-container">
       <div className="form-inner">
-        <h2 className="form-title">Login</h2>
+        <h2 className="form-title">Авторизация</h2>
         <form onSubmit={handleSubmit} className="form">
           <div className="form-group">
             <label htmlFor="email" className="form-label">Email</label>
-            <input name="email" value={formData.email} onChange={handleChange} className="form-input" placeholder="Email" />
+            <input name="email" value={formData.email} onChange={handleChange} className="form-input" placeholder="Введите ваш email" />
           </div>
           <div className="form-group">
-            <label htmlFor="password" className="form-label">Password</label>
-            <input name="password" value={formData.password} onChange={handleChange} className="form-input" placeholder="Password" type="password" />
+            <label htmlFor="password" className="form-label">Пароль</label>
+            <input name="password" value={formData.password} onChange={handleChange} className="form-input" placeholder="Введите ваш пароль" type="password" />
           </div>
           {error && <p className="error-message">{error}</p>}
           <button type="submit" className="form-button">Login</button>
