@@ -157,6 +157,17 @@ const CreateEditArticleForm = () => {
               onChange={handleChange}
               placeholder="Введите текст запроса"
               required
+              style={{
+                padding: '10px',
+                border: '1px solid #ccc',
+                borderRadius: '4px',
+                width: '100%',
+                backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                minHeight: '100px',
+                maxHeight: '250px',
+                minWidth: '300px',
+                maxWidth: '450px'
+              }}
             />
           </div>
         )}

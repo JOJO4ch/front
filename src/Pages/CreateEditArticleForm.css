@@ -8,6 +8,13 @@
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+#create-post-requestText {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+}
 
 /* Title of the article form */
 .article-title {

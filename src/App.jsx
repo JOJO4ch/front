@@ -4,16 +4,28 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import Home from './Pages/Home';
 import Login from './Pages/Login';
 import Register from './Pages/Register';
-import GPTForm from './Pages/GPTform';
 import CreateEditArticleForm from './Pages/CreateEditArticleForm';
 import SearchArticles from './Pages/SearchArticles';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import ProtectedRoute from './components/ProtectedRoute';
 import './index.css';
 import './BackgroundAnimation.css'; // Import the CSS file
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+
+  const token = localStorage.getItem('jwtToken');
+  let username = '';
+
+  if (token) {
+    try {
+      const decodedToken = jwt_decode(token);
+      username = decodedToken.username; // предположим, что имя пользователя хранится в поле 'username' токена
+    } catch (error) {
+      console.error('Error decoding token:', error);
+    }
+  }
 
   React.useEffect(() => {
     const token = localStorage.getItem('jwtToken');
@@ -26,7 +38,7 @@ const App = () => {
     
       <div className="app-container">
         <div className="rolling-background"></div>
-        <Header isAuthenticated={isAuthenticated} />
+        <Header isAuthenticated={isAuthenticated} username={username} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
