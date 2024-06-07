@@ -30,25 +30,46 @@ const CreateEditArticleForm = () => {
         setError(null);
         setFormData({ id: '', header: '', text: '', requestText: '' });
       } else {
-        const jwtToken = Cookies.get('jwtToken') || localStorage.getItem('jwtToken');
-        const payload = {
-          gpt: {
-            chosed_type: 'Рерайт',
-            post_type: 'Статья'
-          },
-          user_text: formData.requestText
-        };
-        const response = await axios.post('http://127.0.0.1:8000/article/ask_gpt', payload, {
-          headers: {
-            'Authorization': `Bearer ${jwtToken}`,
-            'Content-Type': 'application/json'
-          }
-        });
-        const { header, text } = response.data;
-        setFormData({ ...formData, header, text });
-        setShowGptFields(true);
-        setGptError(null);
+        if (!showGptFields) {
+          const jwtToken = Cookies.get('jwtToken') || localStorage.getItem('jwtToken');
+          const payload = {
+            gpt: {
+              chosed_type: 'Рерайт',
+              post_type: 'Статья'
+            },
+            user_text: formData.requestText
+          };
+          const response = await axios.post('http://127.0.0.1:8000/article/ask_gpt', payload, {
+            headers: {
+              'Authorization': `Bearer ${jwtToken}`,
+              'Content-Type': 'application/json'
+            }
+          });
+          const { header, text } = response.data;
+          setFormData({ ...formData, header, text });
+          setShowGptFields(true);
+          setGptError(null);
+        } else {
+          await savePost();
+        }
       }
+    } catch (error) {
+      console.error('Error:', error);
+      if (!showGptFields) {
+        setGptError('Произошла ошибка при генерации текста.');
+      } else {
+        setError('Произошла ошибка при сохранении статьи.');
+      }
+    }
+  };
+
+  const savePost = async () => {
+    try {
+      await axios.post('/api/article/create_article', formData);
+      setSuccess(true);
+      setError(null);
+      setFormData({ id: '', header: '', text: '', requestText: '' });
+      setShowGptFields(false);
     } catch (error) {
       console.error('Error:', error);
       setError('Произошла ошибка при сохранении статьи.');
@@ -169,11 +190,16 @@ const CreateEditArticleForm = () => {
         {!isEditMode && !showGptFields && (
           <button type="submit" className="gpt-form-button">Отправить запрос</button>
         )}
-        <button type="submit" className="form-submit-button">{isEditMode ? 'Сохранить изменения' : 'Создать пост'}</button>
+        {showGptFields && (
+          <button type="button" onClick={savePost} className="form-submit-button-2">Создать пост</button>
+        )}
+        {isEditMode && (
+          <button type="submit" className="form-submit-button">Сохранить изменения</button>
+        )}
       </form>
       {error && <p className="error-message">{error}</p>}
-{gptError && <p className="error-message">{gptError}</p>}
-{success && <p className="success-message">{isEditMode ? 'Пост успешно отредактирован!' : 'Пост успешно создан!'}</p>}
+      {gptError && <p className="error-message">{gptError}</p>}
+      {success && <p className="success-message">{isEditMode ? 'Пост успешно отредактирован!' : 'Пост успешно создан!'}</p>}
     </div>
   );
 };
