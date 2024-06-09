@@ -2,8 +2,7 @@
 FROM node:latest as build
 
 # Устанавливаем рабочую директорию внутри контейнера
-WORKDIR /v2 
-# хз либо сама папка src надо потыкать
+WORKDIR /app
 
 # Копируем package.json и package-lock.json
 COPY package*.json ./
@@ -19,7 +18,7 @@ RUN npm run build
 
 # Устанавливаем nginx для сервировки приложения
 FROM nginx:alpine
-COPY --from=0 /app/build /usr/share/nginx/html
+COPY --from=build /app/dist /usr/share/nginx/html
 
 # Копируем конфигурацию nginx
 COPY nginx.conf /etc/nginx/nginx.conf
