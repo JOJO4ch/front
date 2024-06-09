@@ -4,7 +4,7 @@ import './CreateGPTConstructForm.css'; // Импортируем стили дл
 
 const CreateGPTConstructForm = ({ userId }) => {
   const [formData, setFormData] = useState({
-    style: '' ,
+    style: '',
     tone: '',
     language_constructs: '',
     answer_length: 0,
@@ -14,18 +14,25 @@ const CreateGPTConstructForm = ({ userId }) => {
   const [error, setError] = useState(null);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: name === 'answer_length' ? parseInt(value, 10) : value
+    }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const formDataToSubmit = {
+      ...formData,
+      user_id: userId
+    };
+
     try {
       const response = await axios.post(
         '/api/gpt_construct/create_construct',
-        { ...formData, user_id: userId },
+        formDataToSubmit,
         {
           headers: {
             'Content-Type': 'application/json'
