@@ -39,7 +39,7 @@ const CreateEditArticleForm = () => {
             },
             user_text: formData.requestText
           };
-          const response = await axios.post('http://127.0.0.1:8000/article/ask_gpt', payload, {
+          const response = await axios.post('/api/article/ask_gpt', payload, {
             headers: {
               'Authorization': `Bearer ${jwtToken}`,
               'Content-Type': 'application/json'

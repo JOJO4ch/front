@@ -23,6 +23,13 @@ const Login = ({ setIsAuthenticated, setUser }) => {
     const user = jwt_decode(token);
     localStorage.setItem('user', JSON.stringify(user));
     setUser(user); // Set the user state with decoded user data
+    
+      const decodedToken = jwt_decode(token);
+      const userId = decodedToken.sub; // Извлекаем идентификатор пользователя из токена
+      localStorage.setItem('user', JSON.stringify(decodedToken));
+      setUser(decodedToken); // Устанавливаем состояние пользователя
+      return userId;
+    
   };
 
   const handleLogin = async () => {

@@ -1,0 +1,50 @@
+/* src/CreateGPTConstructForm.css */
+.gpt-construct-form-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .gpt-construct-form-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .gpt-construct-form-container .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .gpt-construct-form-container label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .gpt-construct-form-container input,
+  .gpt-construct-form-container select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .gpt-construct-form-container button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .gpt-construct-form-container button:hover {
+    background-color: #0056b3;
+  }
+  

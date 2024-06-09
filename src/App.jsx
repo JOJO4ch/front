@@ -8,6 +8,7 @@ import CreateEditArticleForm from './Pages/CreateEditArticleForm';
 import SearchArticles from './Pages/SearchArticles';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import CreateGPTConstructForm from './Pages/CreateGPTConstructForm';
 import ProtectedRoute from './components/ProtectedRoute';
 import './index.css';
 import './BackgroundAnimation.css'; // Import the CSS file
@@ -43,8 +44,9 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/article/create_edit_article" element={isAuthenticated ? <CreateEditArticleForm /> : <Navigate to="/login" />} />
-           <Route path="/article/search" element={isAuthenticated ? <SearchArticles /> : <Navigate to="/login" />} />
+          <Route path="/article/create_edit_article" element={isAuthenticated ? <CreateEditArticleForm /> : <Navigate to="/" />} />
+           <Route path="/article/search" element={isAuthenticated ? <SearchArticles /> : <Navigate to="/" />} />
+           <Route path="/create_gpt_construct" element={<CreateGPTConstructForm/>} />
         </Routes>
         <Footer />
       </div>
