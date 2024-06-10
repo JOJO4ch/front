@@ -42,6 +42,7 @@ const Header = ({ isAuthenticated }) => {
                 <li><Link to="/article/create_edit_article">Создать пост</Link></li>
                 <li><Link to="/article/search">Поиск</Link></li>
                 <li><Link to="/create_gpt_construct">Создать GPT Конструкт</Link></li>
+                <li><Link to="/adminPanel">Admin</Link></li>
                 <li><span className="username">Welcome, {username}</span></li>
                 <li><span className="logout" onClick={handleLogout}>Выход</span></li>
               </>

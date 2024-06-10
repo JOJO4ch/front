@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './CreateGPTConstructForm.css'; // Импортируем стили для формы
+import './CreateGPTConstructForm.css';
 
 const CreateGPTConstructForm = ({ userId }) => {
   const [formData, setFormData] = useState({
     style: '',
     tone: '',
     language_constructs: '',
-    answer_length: 0,
+    answer_lenght: 0,
     details: ''
   });
-
   const [error, setError] = useState(null);
+  const [constructData, setConstructData] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
-      [name]: name === 'answer_length' ? parseInt(value, 10) : value
+      [name]: name === 'answer_lenght' ? parseInt(value, 10) : value
     }));
   };
 
@@ -40,18 +40,22 @@ const CreateGPTConstructForm = ({ userId }) => {
         }
       );
       console.log('Construct created successfully:', response.data);
-      // Очистить форму после успешного создания конструкта
+      setConstructData(response.data);
       setFormData({
         style: '',
         tone: '',
         language_constructs: '',
-        answer_length: 0,
+        answer_lenght: 0,
         details: ''
       });
       setError(null);
     } catch (error) {
-      console.error('Error creating construct:', error);
-      setError('Error creating construct. Please try again.');
+      console.error('Error creating construct:', error.response ? error.response.data : error.message);
+      setError(
+        error.response && error.response.data && error.response.data.detail
+          ? error.response.data.detail
+          : 'Error creating construct. Please try again.'
+      );
     }
   };
 
@@ -96,12 +100,12 @@ const CreateGPTConstructForm = ({ userId }) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="answer_length">Answer Length:</label>
+          <label htmlFor="answer_lenght">Answer Length:</label>
           <input
             type="number"
-            id="answer_length"
-            name="answer_length"
-            value={formData.answer_length}
+            id="answer_lenght"
+            name="answer_lenght"
+            value={formData.answer_lenght}
             onChange={handleChange}
             placeholder="Enter answer length"
             required
@@ -119,6 +123,12 @@ const CreateGPTConstructForm = ({ userId }) => {
           ></textarea>
         </div>
         {error && <p className="error-message">{error}</p>}
+        {constructData && (
+          <div className="success-message">
+            <p>Construct created successfully with the following details:</p>
+            <pre>{JSON.stringify(constructData, null, 2)}</pre>
+          </div>
+        )}
         <button type="submit">Create Construct</button>
       </form>
     </div>

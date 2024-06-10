@@ -2,14 +2,14 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:8000', // замените на URL вашего бэкенда
+  baseURL: '/api', // Используем относительный путь, чтобы Vite мог проксировать запросы
   withCredentials: true, // для отправки куки
 });
 
 export const fetchUsername = async () => {
   try {
     const jwtToken = localStorage.getItem('jwtToken');
-    const response = await axios.get('api/protected-route', {
+    const response = await api.get('/protected-route', {
       headers: {
         'Authorization': `Bearer ${jwtToken}`
       }

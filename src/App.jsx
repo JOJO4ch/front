@@ -12,6 +12,7 @@ import CreateGPTConstructForm from './Pages/CreateGPTConstructForm';
 import ProtectedRoute from './components/ProtectedRoute';
 import './index.css';
 import './BackgroundAnimation.css'; // Import the CSS file
+import AdminPanel from './Pages/AdminPanel';
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
@@ -47,6 +48,7 @@ const App = () => {
           <Route path="/article/create_edit_article" element={isAuthenticated ? <CreateEditArticleForm /> : <Navigate to="/" />} />
            <Route path="/article/search" element={isAuthenticated ? <SearchArticles /> : <Navigate to="/" />} />
            <Route path="/create_gpt_construct" element={<CreateGPTConstructForm/>} />
+           <Route path="/adminPanel" element={<AdminPanel/>} />
         </Routes>
         <Footer />
       </div>
