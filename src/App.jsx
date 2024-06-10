@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import CreateGPTConstructForm from './Pages/CreateGPTConstructForm';
 import ProtectedRoute from './components/ProtectedRoute';
 import './index.css';
+import './BackgroundVideo';
 import './BackgroundAnimation.css'; // Import the CSS file
 import AdminPanel from './Pages/AdminPanel';
 
@@ -39,7 +40,8 @@ const App = () => {
   return (
     
       <div className="app-container">
-        <div className="rolling-background"></div>
+       
+         <div className="rolling-background"></div> 
         <Header isAuthenticated={isAuthenticated} username={username} />
         <Routes>
           <Route path="/" element={<Home />} />

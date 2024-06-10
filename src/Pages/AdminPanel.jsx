@@ -32,15 +32,14 @@ const AdminPanel = ({ userId }) => {
   const handleDeleteConstruct = async () => {
     try {
       const response = await axios.delete(`/api/gpt_construct/delete_construct`, {
-        data: {
+        params: {
           construct_id: constructId,
         },
       });
       console.log('Construct deleted successfully:', response.data);
-      // Обновить UI или выполнить другие действия по необходимости
+      setError(null);
     } catch (error) {
       console.error('Error deleting construct:', error.response ? error.response.data : error.message);
-      // Обработка ошибки
       setError('Error deleting construct. Please try again.');
     }
   };
