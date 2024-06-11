@@ -14,12 +14,15 @@ import './index.css';
 import './BackgroundVideo';
 import './BackgroundAnimation.css'; // Import the CSS file
 import AdminPanel from './Pages/AdminPanel';
+import SearchConstructs from './Pages/SearchConstructs';
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
 
+  
   const token = localStorage.getItem('jwtToken');
   let username = '';
+  let isSuperuser = false;
 
   if (token) {
     try {
@@ -51,6 +54,7 @@ const App = () => {
            <Route path="/article/search" element={isAuthenticated ? <SearchArticles /> : <Navigate to="/" />} />
            <Route path="/create_gpt_construct" element={<CreateGPTConstructForm/>} />
            <Route path="/adminPanel" element={<AdminPanel/>} />
+           <Route path="/search_constructs" element={isAuthenticated ? <SearchConstructs userId={username} isSuperuser={isSuperuser} /> : <Navigate to="/" />} />
         </Routes>
         <Footer />
       </div>
