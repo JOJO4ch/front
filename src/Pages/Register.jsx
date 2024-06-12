@@ -1,18 +1,16 @@
 import React, { useState } from 'react';
-import axios from '../axiosConfig';
-import './Register.css';
+import axios from 'axios';
+import './Register.css'; // Import the CSS file specific to Register
 
 const Registration = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
-    is_active: true,
-    is_superuser: false,
-    is_verified: false,
     login: ''
   });
 
   const [error, setError] = useState(null);
+  const [registrationSuccess, setRegistrationSuccess] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -24,12 +22,15 @@ const Registration = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/auth/register', formData);
+      const response = await axios.post('/api/auth/register', formData); // Adjust the URL based on your API endpoint
 
-      const { token } = response.data;
-      localStorage.setItem('token', token);
-
-      console.log('Registration successful:', response.data);
+      // Если код ответа 201 (Создан), отобразить сообщение об успешной регистрации
+      if (response.status === 201) {
+        setRegistrationSuccess(true);
+        setError(null); // Очистка ошибки
+      } else {
+        setError('Registration failed. Please check your inputs and try again.');
+      }
     } catch (error) {
       console.error('Registration failed:', error);
       setError('Registration failed. Please check your inputs and try again.');
@@ -40,6 +41,7 @@ const Registration = () => {
     <div className="form-container">
       <h2 className="form-title">Регистрация</h2>
       <form onSubmit={handleSubmit}>
+        {registrationSuccess && <p className="success">Регистрация успешна!</p>}
         <div className="form-group">
           <label htmlFor="email">Email</label>
           <input name="email" value={formData.email} onChange={handleChange} placeholder="Email" />

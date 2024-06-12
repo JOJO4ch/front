@@ -167,6 +167,17 @@ const GPTConstructForm = ({ userId }) => {
             onChange={handleChange}
             placeholder="Enter details"
             required
+            style={{
+              padding: '10px',
+              border: '1px solid #ccc',
+              borderRadius: '4px',
+              width: '100%',
+              backgroundColor: 'rgba(255, 255, 255, 0.9)',
+              minHeight: '100px',
+              maxHeight: '250px',
+              minWidth: '500px',
+              maxWidth: '600px'
+            }}
           ></textarea>
         </div>
         {error && <p className="error-message">{error}</p>}

@@ -9,7 +9,7 @@ const Login = ({ setIsAuthenticated, setUser }) => {
     password: ''
   });
 
-  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(false); // Состояние для отслеживания успешной авторизации
 
   const handleChange = (e) => {
     setFormData({
@@ -20,39 +20,43 @@ const Login = ({ setIsAuthenticated, setUser }) => {
 
   const saveToken = (token) => {
     localStorage.setItem('jwtToken', token);
-    const user = jwt_decode(token);
-    localStorage.setItem('user', JSON.stringify(user));
-    setUser(user); // Set the user state with decoded user data
-    
-      const decodedToken = jwt_decode(token);
-      const userId = decodedToken.sub; // Извлекаем идентификатор пользователя из токена
-      localStorage.setItem('user', JSON.stringify(decodedToken));
-      setUser(decodedToken); // Устанавливаем состояние пользователя
-      return userId;
-    
+    // const user = jwt_decode(token);
+    // localStorage.setItem('user', JSON.stringify(user));
+    // setUser(user);
+    // return jwt_decode(token).sub;
   };
 
-  const handleLogin = async () => {
-    try {
-      const response = await axios.post('/api/auth/jwt/login', {
-        username: formData.email,
-        password: formData.password
-      }, {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      });
+const handleLogin = async () => {
+  try {
+    const response = await axios.post('/api/auth/jwt/login', {
+      username: formData.email,
+      password: formData.password
+    }, {
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    });
 
+    if (response.status === 204) {
       const token = response.data.access_token;
-      saveToken(token);
+        saveToken(token);
       setIsAuthenticated(true);
-      setError(null); // Clear error after successful login
-      window.location.href = '/'; // Redirect to home page
-    } catch (error) {
-      console.error('Login failed:', error);
-      setError('Login failed. Please check your credentials and try again.');
+      setSuccess(true);
+      setTimeout(() => {
+        setSuccess(false);
+      }, 1000000);
+      console.log('Login successful!');
+      console.log('Response data:', response.data);
+      window.location.href = '/';
+      return;
     }
-  };
+  } catch (error) {
+    console.error('Login failed:', error);
+    
+  }
+};
+
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -63,6 +67,7 @@ const Login = ({ setIsAuthenticated, setUser }) => {
     <div className="form-container">
       <div className="form-inner">
         <h2 className="form-title">Авторизация</h2>
+        {success && <p className="success-message">Успешная авторизация!</p>} {/* Отображаем сообщение об успешной авторизации */}
         <form onSubmit={handleSubmit} className="form">
           <div className="form-group">
             <label htmlFor="email" className="form-label">Email</label>
@@ -72,7 +77,6 @@ const Login = ({ setIsAuthenticated, setUser }) => {
             <label htmlFor="password" className="form-label">Пароль</label>
             <input name="password" value={formData.password} onChange={handleChange} className="form-input" placeholder="Введите ваш пароль" type="password" />
           </div>
-          {error && <p className="error-message">{error}</p>}
           <button type="submit" className="form-button">Login</button>
         </form>
       </div>
