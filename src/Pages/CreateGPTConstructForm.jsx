@@ -1,17 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './CreateGPTConstructForm.css';
 
-const CreateGPTConstructForm = ({ userId }) => {
+const GPTConstructForm = ({ userId }) => {
   const [formData, setFormData] = useState({
+    construct_id: '',
     style: '',
     tone: '',
     language_constructs: '',
-    answer_lenght: 0,
+    answer_lenght: '',
     details: ''
   });
   const [error, setError] = useState(null);
   const [constructData, setConstructData] = useState(null);
+  const [mode, setMode] = useState('create'); // 'create' or 'edit'
+
+  
+
+  useEffect(() => {
+    if (mode === 'edit') {
+      // Если переключились в режим редактирования, очистим форму
+      setFormData({
+        construct_id: '',
+        style: '',
+        tone: '',
+        language_constructs: '',
+        answer_lenght: '',
+        details: ''
+      });
+      setConstructData(null);
+    }
+  }, [mode]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,45 +43,73 @@ const CreateGPTConstructForm = ({ userId }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const formDataToSubmit = {
-      ...formData,
-      user_id: userId
-    };
-
     try {
-      const response = await axios.post(
-        '/api/gpt_construct/create_construct',
-        formDataToSubmit,
-        {
-          headers: {
-            'Content-Type': 'application/json'
+      const { construct_id, style, tone, language_constructs, answer_lenght, details } = formData;
+      const requestData = {
+        style,
+        tone,
+        language_constructs,
+        answer_lenght,
+        details,
+        user_id: userId
+      };
+
+      let response;
+      if (mode === 'edit') {
+         response = await axios.put(
+          `/api/gpt_construct/update_construct`,
+          {},
+          {
+            params: {
+              construct_id,
+              style,
+              tone,
+              language_constructs,
+              answer_lenght: answer_lenght, // Обратите внимание на орфографию "answer_lenght"
+              details
+            },
+            headers: {
+              'Content-Type': 'application/json'
+            }
           }
-        }
-      );
-      console.log('Construct created successfully:', response.data);
+        );
+        
+      } else {
+        response = await axios.post('/api/gpt_construct/create_construct', requestData);
+      }
+
+      console.log('Construct operation successful:', response.data);
       setConstructData(response.data);
-      setFormData({
-        style: '',
-        tone: '',
-        language_constructs: '',
-        answer_lenght: 0,
-        details: ''
-      });
       setError(null);
     } catch (error) {
-      console.error('Error creating construct:', error.response ? error.response.data : error.message);
-      setError(
-        error.response && error.response.data && error.response.data.detail
-          ? error.response.data.detail
-          : 'Error creating construct. Please try again.'
-      );
+      console.error('Error performing construct operation:', error);
+      setError(error.message || 'An error occurred. Please try again.');
     }
+  };
+
+  const handleModeToggle = () => {
+    setMode(mode === 'create' ? 'edit' : 'create');
   };
 
   return (
     <div className="gpt-construct-form-container">
-      <h2>Create GPT Construct</h2>
+      <h2>{mode === 'edit' ? 'Edit GPT Construct' : 'Create GPT Construct'}</h2>
+      <button onClick={handleModeToggle}>{mode === 'edit' ? 'Switch to Create Mode' : 'Switch to Edit Mode'}</button>
       <form onSubmit={handleSubmit} className="gpt-construct-form">
+        {mode === 'edit' && (
+          <div className="form-group">
+            <label htmlFor="construct_id">Construct ID:</label>
+            <input
+              type="number"
+              id="construct_id"
+              name="construct_id"
+              value={formData.construct_id}
+              onChange={handleChange}
+              placeholder="Enter construct ID"
+              required
+            />
+          </div>
+        )}
         <div className="form-group">
           <label htmlFor="style">Style:</label>
           <input
@@ -100,7 +147,7 @@ const CreateGPTConstructForm = ({ userId }) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="answer_lenght">Answer Length:</label>
+          <label htmlFor="answer_length">Answer Length:</label>
           <input
             type="number"
             id="answer_lenght"
@@ -125,14 +172,14 @@ const CreateGPTConstructForm = ({ userId }) => {
         {error && <p className="error-message">{error}</p>}
         {constructData && (
           <div className="success-message">
-            <p>Construct created successfully with the following details:</p>
+            <p>Construct {mode === 'edit' ? 'updated' : 'created'} successfully with the following details:</p>
             <pre>{JSON.stringify(constructData, null, 2)}</pre>
-          </div>
-        )}
-        <button type="submit">Create Construct</button>
-      </form>
-    </div>
-  );
+</div>
+)}
+<button type="submit">{mode === 'edit' ? 'Update Construct' : 'Create Construct'}</button>
+</form>
+</div>
+);
 };
 
-export default CreateGPTConstructForm;
+export default GPTConstructForm;
