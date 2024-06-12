@@ -93,57 +93,46 @@ const SearchConstructs = ({ userId, isSuperuser }) => {
   return (
     <div className="search-constructs-container">
       <div className="filters">
-        <h2 className="search-title">Search Constructs</h2>
+        <h2 className="search-title">Поиск конструктов</h2>
         <div className="form-group">
-          <label htmlFor="constructId">Construct ID:</label>
+          <label htmlFor="constructId">Поиск по ID конструкта:</label>
           <input
             type="text"
             id="constructId"
             name="constructId"
             value={constructId}
             onChange={handleInputChange}
-            placeholder="Enter Construct ID"
+            placeholder="Введите ID конструкта"
           />
-          <button onClick={searchConstructById} className="search-button">Search by ID</button>
+          <button onClick={searchConstructById} className="search-button">Искать по ID</button>
         </div>
         
         <button onClick={toggleFilters} className="toggle-filters-button">
-          {showFilters ? 'Hide Filters' : 'Show Filters'}
+          {showFilters ? 'Спрятать фильтры' : 'Показать фильтры'}
         </button>
         
         {showFilters && (
           <div className="filters-container">
             <div className="form-group">
-              <label htmlFor="limit">Limit:</label>
+              <label htmlFor="limit">Лимит:</label>
               <input
                 type="number"
                 id="limit"
                 name="limit"
                 value={filters.limit}
                 onChange={handleInputChange}
-                placeholder="Limit"
+                placeholder="Введите ограничение по количеству"
               />
             </div>
             <div className="form-group">
-              <label htmlFor="page">Page:</label>
+              <label htmlFor="page">Страница:</label>
               <input
                 type="number"
                 id="page"
                 name="page"
                 value={filters.page}
                 onChange={handleInputChange}
-                placeholder="Page"
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="search">Search:</label>
-              <input
-                type="text"
-                id="search"
-                name="search"
-                value={filters.search}
-                onChange={handleInputChange}
-                placeholder="Search"
+                placeholder="Введите страницу"
               />
             </div>
             <button onClick={searchConstructs} className="search-button">Search by Filters</button>

@@ -54,25 +54,25 @@ const AdminPanel = ({ userId }) => {
 
   return (
     <div className="admin-panel">
-      <h1>Admin Panel</h1>
+      <h1>Панель администратора</h1>
      
       
         
-          <h2>Approval Form</h2>
+         
           <div className="form-group">
-            <label htmlFor="constructId">Construct ID:</label>
+            <label htmlFor="constructId">ID конструкта:</label>
             <input type="text" id="constructId" value={constructId} onChange={handleConstructIdChange} />
           </div>
           <div className="form-group">
-            <label htmlFor="approvedValue">Approved:</label>
+            <label htmlFor="approvedValue">Изменить статус:</label>
             <select id="approvedValue" value={approvedValue} onChange={handleApprovedChange}>
-              <option value="OnCheck">On Check</option>
-              <option value="Approved">Approved</option>
-              <option value="Banned">Banned</option>
+              <option value="OnCheck">Ожидает рассмотрения</option>
+              <option value="Approved">Одобрен</option>
+              <option value="Banned">Заблокирован</option>
             </select>
           </div>
-          <button onClick={handleApproveConstruct}>Approve Construct</button>
-          <button onClick={handleDeleteConstruct}>Delete Construct</button>
+          <button onClick={handleApproveConstruct}>Изменить статус конструкта</button>
+          <button onClick={handleDeleteConstruct}>Удалить конструкт</button>
           {error && <p className="error-message">{error}</p>}
         </div>
       
