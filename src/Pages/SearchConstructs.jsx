@@ -161,11 +161,11 @@ const SearchConstructs = ({ userId, isSuperuser }) => {
           <div className="construct-result">
             <h3>{construct.style}</h3>
             <p>ID: {construct.id}</p>
-            <p>Tone: {construct.tone}</p>
-            <p>Language Constructs: {construct.language_constructs}</p>
-            <p>Details: {construct.details}</p>
-            <p>Answer Length: {construct.answer_length}</p>
-            <p>Approved: {construct.approved}</p>
+            <p>Тон: {construct.tone}</p>
+            <p>Языковые конструкции: {construct.language_constructs}</p>
+            <p>Детали: {construct.details}</p>
+            <p>Длина ответа: {construct.answer_lenght}</p>
+            <p>Статус: {construct.approved}</p>
           </div>
         )}
         
@@ -191,7 +191,7 @@ const SearchConstructs = ({ userId, isSuperuser }) => {
                     <td>{construct.tone}</td>
                     <td>{construct.language_constructs}</td>
                     <td>{construct.details}</td>
-                    <td>{construct.answer_length}</td>
+                    <td>{construct.answer_lenght}</td>
                     <td>{construct.approved}</td>
                   </tr>
                 ))}
