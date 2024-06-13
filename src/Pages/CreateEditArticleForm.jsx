@@ -161,7 +161,7 @@ const CreateEditArticleForm = () => {
                 padding: '10px',
                 border: '1px solid #ccc',
                 borderRadius: '4px',
-                width: '100%',
+                width: '90%',
                 backgroundColor: 'rgba(255, 255, 255, 0.9)',
                 minHeight: '100px',
                 maxHeight: '250px',

@@ -77,13 +77,13 @@ const GPTConstructForm = ({ userId }) => {
         response = await axios.post('/api/gpt_construct/create_construct', requestData);
       }
 
-      console.log('Construct operation successful:', response.data);
+      console.log('Конструкт успешно создан:', response.data);
       setConstructData(response.data);
       setError(null);
       setSuccessMessage(`Construct ${mode === 'edit' ? 'updated' : 'created'} successfully.`);
     } catch (error) {
-      console.error('Error performing construct operation:', error);
-      setError(error.message || 'An error occurred. Please try again.');
+      console.error('Произошла ошибка:', error);
+      setError(error.message || 'Произошла ошибка. Повторите попытку.');
     }
   };
 
@@ -171,7 +171,7 @@ const GPTConstructForm = ({ userId }) => {
                   padding: '10px',
                   border: '1px solid #ccc',
                   borderRadius: '4px',
-                  width: '100%',
+                  width: '90%',
                   backgroundColor: 'rgba(255, 255, 255, 0.9)',
                   minHeight: '100px',
                   maxHeight: '250px',

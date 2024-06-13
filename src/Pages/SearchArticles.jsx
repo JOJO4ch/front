@@ -168,7 +168,13 @@ const SearchArticles = () => {
                 </div>
               ))
             ) : (
-              <p>Нет результатов</p>
+              <p style={{
+                padding: '10px',
+                border: '1px solid #ccc',
+                borderRadius: '4px',
+                backgroundColor: 'rgba(255, 255, 255, 0.9)',
+               
+              }}>Нет результатов</p>
             )}
           </div>
         )}
