@@ -42,8 +42,8 @@ const Header = ({ isAuthenticated }) => {
             <ul className={menuOpen ? 'show' : ''}>
               {!isAuthenticated && (
                 <>
-                  <li><Link to="/login">Login</Link></li>
-                  <li><Link to="/register">Register</Link></li>
+                  <li><Link to="/login">Авторизация</Link></li>
+                  <li><Link to="/register">Регистрация</Link></li>
                 </>
               )}
               {isAuthenticated && (

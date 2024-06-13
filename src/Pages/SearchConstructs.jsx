@@ -135,7 +135,7 @@ const SearchConstructs = ({ userId, isSuperuser }) => {
                 placeholder="Введите страницу"
               />
             </div>
-            <button onClick={searchConstructs} className="search-button">Search by Filters</button>
+            <button onClick={searchConstructs} className="search-button">Поиск с фильтрами</button>
           </div>
         )}
         {isSuperuser && (
