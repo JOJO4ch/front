@@ -1,9 +1,9 @@
-// src/api.js
+
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: '/api', // Используем относительный путь, чтобы Vite мог проксировать запросы
-  withCredentials: true, // для отправки куки
+  baseURL: '/api',
+  withCredentials: true, 
 });
 
 export const fetchUsername = async () => {

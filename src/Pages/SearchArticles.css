@@ -1,40 +1,40 @@
-/* Ensure the container takes up the full viewport height */
+
 .search-articles-container {
   display: flex;
-  height: 100vh; /* Full viewport height */
-  overflow: hidden; /* Prevent content from overflowing */
+  height: 100vh;
+  overflow: hidden; 
 }
 
-/* Left side filters container */
+
 .search-filters {
   width: 30%;
   max-width: 350px;
   padding: 20px;
   margin-top:40px;
   background-color: #f0f0f0;
-  overflow-y: auto; /* Enable vertical scrolling */
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
-  border-right: 1px solid #ccc; /* Add a border to distinguish sections */
+  overflow-y: auto; 
+  box-sizing: border-box; 
+  border-right: 1px solid #ccc; 
 }
 
-/* Right side results container */
+
 .search-results {
   width: 70%;
   padding: 20px;
-  overflow-y: auto; /* Enable vertical scrolling */
-  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  overflow-y: auto; 
+  box-sizing: border-box; 
 }
 
-/* Ensure articles results take full height and allow scrolling */
+
 .articles-results {
   display: flex;
   flex-direction: column;
-  gap: 10px; /* Adds space between articles */
+  gap: 10px; 
   height: 100%;
   overflow-y: auto;
 }
 
-/* Style for individual search result */
+
 .search-result {
   border: 1px solid #ccc;
   padding: 10px;

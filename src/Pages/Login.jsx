@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import * as jwt_decode from 'jwt-decode';
-import './Login.css'; // Import the CSS file specific to Login
+import './Login.css'; 
 
 const Login = ({ setIsAuthenticated, setUser }) => {
   const [formData, setFormData] = useState({
@@ -9,7 +9,7 @@ const Login = ({ setIsAuthenticated, setUser }) => {
     password: ''
   });
 
-  const [success, setSuccess] = useState(false); // Состояние для отслеживания успешной авторизации
+  const [success, setSuccess] = useState(false); 
 
   const handleChange = (e) => {
     setFormData({
@@ -67,7 +67,7 @@ const handleLogin = async () => {
     <div className="form-container">
       <div className="form-inner">
         <h2 className="form-title">Авторизация</h2>
-        {success && <p className="success-message">Успешная авторизация!</p>} {/* Отображаем сообщение об успешной авторизации */}
+        {success && <p className="success-message">Успешная авторизация!</p>} 
         <form onSubmit={handleSubmit} className="form">
           <div className="form-group">
             <label htmlFor="email" className="form-label">Email</label>

@@ -14,38 +14,38 @@ body, html {
 .app-container {
   display: flex;
   flex-direction: column;
-  height: 100vh; /* Ensure it takes up the full viewport height */
+  height: 100vh; 
   overflow: hidden;
 }
 
 header, main, footer {
   position:fixed;
-  z-index: 1; /* Ensure content is above the background */
+  z-index: 1; 
 }
 
 header {
   width: 100%;
   padding: 1rem;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.5); 
   color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-sizing: border-box; /* Ensure padding does not cause overflow */
+  box-sizing: border-box; 
 }
 
 main {
   flex: 1;
   padding: 1rem;
-  box-sizing: border-box; /* Ensure padding does not cause overflow */
-  overflow-y: auto; /* Allow content to scroll within the main area if necessary */
+  box-sizing: border-box;
+  overflow-y: auto; 
 }
 
 footer {
   width: 100%;
   padding: 1rem;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0.5); 
   color: white;
   text-align: center;
-  box-sizing: border-box; /* Ensure padding does not cause overflow */
+  box-sizing: border-box;
 }

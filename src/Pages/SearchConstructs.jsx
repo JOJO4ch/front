@@ -83,7 +83,7 @@ const SearchConstructs = ({ userId, isSuperuser }) => {
 
   const handleFilterChange = (newFilter) => {
     setFilter(newFilter);
-    setFilters({ ...filters, page: 1 }); // Reset to the first page on filter change
+    setFilters({ ...filters, page: 1 }); 
   };
 
   const handlePageChange = (newPage) => {

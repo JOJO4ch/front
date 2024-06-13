@@ -21,10 +21,10 @@ const AdminPanel = ({ userId }) => {
         }
       });
       console.log('Construct approved successfully:', response.data);
-      // Обновить UI или выполнить другие действия по необходимости
+    
     } catch (error) {
       console.error('Error approving construct:', error.response ? error.response.data : error.message);
-      // Обработка ошибки
+    
       setError('Error approving construct. Please try again.');
     }
   };

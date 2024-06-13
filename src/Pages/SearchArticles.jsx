@@ -92,40 +92,40 @@ const SearchArticles = () => {
         {showFilters && (
           <div className="filters-container">
             <div className="form-group">
-              <label htmlFor="limit">Limit:</label>
+              <label htmlFor="limit">Ограничение:</label>
               <input
                 type="number"
                 id="limit"
                 name="limit"
                 value={filters.limit}
                 onChange={handleInputChange}
-                placeholder="Limit"
+                placeholder="Ограничение по количеству"
               />
             </div>
             <div className="form-group">
-              <label htmlFor="page">Page:</label>
+              <label htmlFor="page">Страница:</label>
               <input
                 type="number"
                 id="page"
                 name="page"
                 value={filters.page}
                 onChange={handleInputChange}
-                placeholder="Page"
+                placeholder="Введите страницу"
               />
             </div>
             <div className="form-group">
-              <label htmlFor="search">Search:</label>
+              <label htmlFor="search">Поиск по заголовку:</label>
               <input
                 type="text"
                 id="search"
                 name="search"
                 value={filters.search}
                 onChange={handleInputChange}
-                placeholder="Search"
+                placeholder="Введите заголовок"
               />
             </div>
             <div className="form-group">
-              <label htmlFor="early_date">Early Date:</label>
+              <label htmlFor="early_date">От:</label>
               <input
                 type="date"
                 id="early_date"
@@ -135,7 +135,7 @@ const SearchArticles = () => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="late_date">Late Date:</label>
+              <label htmlFor="late_date">До:</label>
               <input
                 type="date"
                 id="late_date"

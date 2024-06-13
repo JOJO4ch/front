@@ -93,7 +93,7 @@ const CreateEditArticleForm = () => {
     setSuccess(false);
     setError(null);
     setFormData({ id: '', header: '', text: '', requestText: '' });
-    setShowGptFields(false); // Обновление состояния для скрытия полей после переключения режима
+    setShowGptFields(false); 
   };
 
   return (

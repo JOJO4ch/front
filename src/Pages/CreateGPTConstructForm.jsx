@@ -13,12 +13,12 @@ const GPTConstructForm = ({ userId }) => {
   });
   const [error, setError] = useState(null);
   const [constructData, setConstructData] = useState(null);
-  const [mode, setMode] = useState('create'); // 'create' or 'edit'
+  const [mode, setMode] = useState('create'); 
   const [successMessage, setSuccessMessage] = useState('');
 
   useEffect(() => {
     if (mode === 'edit') {
-      // Если переключились в режим редактирования, очистим форму
+    
       setFormData({
         construct_id: '',
         style: '',
@@ -64,7 +64,7 @@ const GPTConstructForm = ({ userId }) => {
               style,
               tone,
               language_constructs,
-              answer_lenght: answer_lenght, // Обратите внимание на орфографию "answer_lenght"
+              answer_lenght: answer_lenght, 
               details
             },
             headers: {

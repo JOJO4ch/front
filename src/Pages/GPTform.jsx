@@ -46,7 +46,7 @@ const GPTForm = () => {
             });
             const { header, text } = response.data;
             setResult({ header, text });
-            setEditedResult({ header, text }); // Initialize editedResult with the received result
+            setEditedResult({ header, text }); 
         } catch (error) {
             console.error('Error:', error);
             setError('Произошла ошибка при выполнении запроса.');
@@ -61,7 +61,7 @@ const GPTForm = () => {
     const handleEditSubmit = async () => {
         try {
             const jwtToken = Cookies.get('jwtToken') || localStorage.getItem('jwtToken');
-            // Send the edited result to the backend for saving
+            
             await axios.post('/api/article/create_article', editedResult, {
                 headers: {
                     'Authorization': `Bearer ${jwtToken}`,

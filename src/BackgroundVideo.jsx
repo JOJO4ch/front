@@ -1,7 +1,7 @@
-// BackgroundVideo.jsx
+
 import React, { useRef, useEffect } from 'react';
 import './BackgroundVideo.css';
-import videoSource from './assets/vvv.mp4'; // Проверьте правильность пути
+import videoSource from './assets/vvv.mp4'; 
 
 const BackgroundVideo = () => {
   const videoRef = useRef(null);
@@ -13,10 +13,10 @@ const BackgroundVideo = () => {
     if (playPromise !== undefined) {
       playPromise
         .then(() => {
-          // Automatic playback started!
+          
         })
         .catch((error) => {
-          // Automatic playback failed.
+         
           console.error('Error playing video:', error);
         });
     }

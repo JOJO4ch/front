@@ -1,4 +1,4 @@
-// src/axiosConfig.js
+
 import axios from 'axios';
 
 const axiosInstance = axios.create({
@@ -9,7 +9,7 @@ const axiosInstance = axios.create({
 });
 
 axiosInstance.interceptors.request.use((config) => {
-  const token = localStorage.getItem('token'); // Retrieve token from localStorage
+  const token = localStorage.getItem('token'); 
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }

@@ -1,4 +1,4 @@
-// App.jsx
+
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Home from './Pages/Home';
@@ -12,7 +12,7 @@ import CreateGPTConstructForm from './Pages/CreateGPTConstructForm';
 import ProtectedRoute from './components/ProtectedRoute';
 import './index.css';
 import './BackgroundVideo';
-import './BackgroundAnimation.css'; // Import the CSS file
+import './BackgroundAnimation.css'; 
 import AdminPanel from './Pages/AdminPanel';
 import SearchConstructs from './Pages/SearchConstructs';
 
@@ -27,7 +27,7 @@ const App = () => {
   if (token) {
     try {
       const decodedToken = jwt_decode(token);
-      username = decodedToken.username; // предположим, что имя пользователя хранится в поле 'username' токена
+      username = decodedToken.username; 
     } catch (error) {
       console.error('Error decoding token:', error);
     }
