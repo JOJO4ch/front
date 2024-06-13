@@ -1,111 +1,70 @@
-
+/* Ensure the container takes up the full viewport height */
 .search-articles-container {
   display: flex;
-  height: calc(100vh - 80px); /* Adjust height based on header and footer */
-  overflow: hidden;
-  padding-top: 20px; /* Add padding to avoid overlap with header */
-  padding-bottom: 20px; /* Add padding to avoid overlap with footer */
-  box-sizing: border-box;
+  height: 100vh; /* Full viewport height */
+  overflow: hidden; /* Prevent content from overflowing */
 }
 
+/* Left side filters container */
 .search-filters {
-  width: 300px;
-  margin: auto;
+  width: 30%;
+  max-width: 350px;
   padding: 20px;
-  border-right: 1px solid #ddd;
-  position: relative;
-  overflow-y: auto;
-  margin-bottom: 0;
-  margin-top: 70px;
-  background-color: #f9f9f9;
-  border-radius: 5px;
-  margin-left: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin-top:40px;
+  background-color: #f0f0f0;
+  overflow-y: auto; /* Enable vertical scrolling */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  border-right: 1px solid #ccc; /* Add a border to distinguish sections */
 }
 
+/* Right side results container */
 .search-results {
-  flex: 1;
-  margin: auto;
-  width: 300px;
-  padding: 53px;
-  overflow-y: auto;
-  max-height: 100%;
-  position: relative;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 70%;
+  padding: 20px;
+  overflow-y: auto; /* Enable vertical scrolling */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
-.search-title {
-  font-size: 24px;
-  margin-bottom: 20px;
-  text-align: center;
+/* Ensure articles results take full height and allow scrolling */
+.articles-results {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Adds space between articles */
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* Style for individual search result */
+.search-result {
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.search-result:hover {
+  background-color: #f0f0f0;
+}
+
+.selected-article {
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+}
+
+.back-button {
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #cbcbcb;
+  border-radius: 10px;
 }
 
 .form-group {
   margin-bottom: 15px;
 }
 
-.form-group label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.search-button,
-.toggle-filters-button {
-  margin-top: 10px;
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  width: 100%;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.search-button:hover,
-.toggle-filters-button:hover {
-  background-color: #0056b3;
-}
-
-.filters-container {
-  margin-top: 20px;
-}
-
-.article-result,
-.search-result {
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 15px;
-  margin-top: 20px;
-  background-color: #fff;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-
-.article-header {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.article-text {
-  margin-bottom: 10px;
-}
-
-.article-date {
-  color: #888;
-}
-
 .error-message {
   color: red;
-  margin-top: 20px;
-  text-align: center;
 }

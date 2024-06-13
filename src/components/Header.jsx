@@ -35,7 +35,7 @@ const Header = ({ isAuthenticated }) => {
       <div className="header-content">
         <div className="left-section">
           <Link to="/" className="header-title">Smart Article</Link>
-          {isAuthenticated && <span className="username">Welcome, {username}</span>}
+          {isAuthenticated && <span className="username">Привет, {username}</span>}
         </div>
         <div className="center-section">
           <nav className="navbar">
