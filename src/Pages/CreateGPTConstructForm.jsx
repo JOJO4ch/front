@@ -80,7 +80,7 @@ const GPTConstructForm = ({ userId }) => {
       console.log('Конструкт успешно создан:', response.data);
       setConstructData(response.data);
       setError(null);
-      setSuccessMessage(`Construct ${mode === 'edit' ? 'updated' : 'created'} successfully.`);
+      setSuccessMessage(`Конструкт ${mode === 'edit' ? 'обновлен' : 'создан'} успешно.`);
     } catch (error) {
       console.error('Произошла ошибка:', error);
       setError(error.message || 'Произошла ошибка. Повторите попытку.');
